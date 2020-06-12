@@ -56,10 +56,16 @@ $(document).ready(function(){
 <body>
 
 
-        <p>
-            <label for="firstnumber"> Number of contenders? </label>
-             <input type="number" name="firstnumber"  id="firstnumber" value=0 placeholder="first number" />
-        </p>
+        <div>
+            <label for="num_people"> Number of contenders? </label>
+             <input type="number" name="num_people"  id="num_people" value=0 />
+        </div>
+
+        <div>
+            <label for="add"> Add a contestant! </label>
+             <input type="text" name="add"  id="add" placeholder="your name here" />
+             <input type="button" onclick="myFunction()" value="Submit">
+        </div>
 
         <p>
             <label> Names: </label>
