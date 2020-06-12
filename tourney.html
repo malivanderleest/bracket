@@ -1,35 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cornhole 2020</title>
 
-<link rel="stylesheet" type="text/css" href="bracket.css">  
+    <link rel="stylesheet" type="text/css" href="bracket.css">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 
 </head>
+
 <body>
-   
-         <img src="cornhole title.png" alt="Cornhole 2020" width="1500" height="300" >
+
+    <img src="cornhole title.png" alt="Cornhole 2020" width="1500" height="300">
+
+    <h1>Round 1</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g1"></td>
+            <td id="g2"></td>
+        </tr>
+        <tr>
+            <td id="g3"></td>
+            <td id="g4"></td>
+        </tr>
+        <tr>
+            <td id="g5"></td>
+            <td id="g6"></td>
+        </tr>
+        <tr>
+            <td id="g7"></td>
+            <td id="g8"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 1:</p>
+    <p id="s1"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="makeBracket2()">Submit Winners and Create Round 2 Bracket!</button>
+    </div>
+    <hr>
+
+    <p id="test1"></p>
+    <p id="test2"></p>
+
+    <h1>Round 2</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g21"></td>
+            <td id="g22"></td>
+        </tr>
+        <tr>
+            <td id="g23"></td>
+            <td id="g24"></td>
+        </tr>
+        <tr>
+            <td id="g25"></td>
+            <td id="g26"></td>
+        </tr>
+        <tr>
+            <td id="g27"></td>
+            <td id="g28"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 2:</p>
+    <p id="s2"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="makeBracket3()">Submit Winners and Create Round 3 Bracket!</button>
+    </div>
+    <hr>
+
+
+    <h1>Round 3</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g31"></td>
+            <td id="g32"></td>
+        </tr>
+        <tr>
+            <td id="g33"></td>
+            <td id="g34"></td>
+        </tr>
+        <tr>
+            <td id="g35"></td>
+            <td id="g36"></td>
+        </tr>
+        <tr>
+            <td id="g37"></td>
+            <td id="g38"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 3:</p>
+    <p id="s3"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="makeBracket4()">Submit Winners and Create Round 4 Bracket!</button>
+    </div>
+    <hr>
 
 
 
-        
 
-<!-- ************************    SCRIPT START ************************* -->
+    <!-- ************************    SCRIPT START ************************* -->
 
-        <script>
-        
-        
-        </script>
-       
-   
+    <script>
+        var allPlayers = JSON.parse(sessionStorage.getItem("allPlayers"));
+
+        let round2players = [];
+        let round3players = [];
+        let round4players = [];
+        let round5players = [];
+
+        let outPlayers = [];
+
+        let hasSatOut = new Map();
+        let wins = new Map();
+        let losses = new Map();
+        //let totalPoints = new Map();
+
+        for (var i = 0; i < allPlayers.length; i++) {
+            hasSatOut.set(allPlayers[i], false);
+            wins.set(allPlayers[i], 0);
+            losses.set(allPlayers[i], 0);
+            //totalPoints.set(allPlayers[i], 0); 
+        }
+
+
+
+        function shuffle(a) {
+            var j, x, i;
+            for (i = a.length - 1; i > 0; i--) {
+                j = Math.floor(Math.random() * (i + 1));
+                x = a[i];
+                a[i] = a[j];
+                a[j] = x;
+            }
+            return a;
+        }
+
+        //********************************** CREATE BRACKET 1  *******************************************
+        shuffle(allPlayers);
+        var numOut = (allPlayers.length) % 4;
+
+        for (var i = 0; i < numOut; i++) {
+            document.getElementById("s1").innerHTML += allPlayers[i];
+            document.getElementById("s1").innerHTML += ", ";
+        }
+
+        var gameCounter = 1;
+        var checkCounter = 1;
+
+        for (var i = numOut; i < allPlayers.length; i = i + 4) {
+            var gameid = "g" + gameCounter;
+            var checkid = "c" + checkCounter;
+
+            var checkbox1 = document.createElement('input');
+            checkbox1.type = "checkbox";
+            checkbox1.id = checkid;
+            checkid = "c" + checkCounter;
+            checkCounter++;
+            checkbox1.p1 = allPlayers[i];
+            checkbox1.p2 = allPlayers[i + 1];
+            checkbox1.o1 = allPlayers[i + 2];
+            checkbox1.o2 = allPlayers[i + 3];
+            var append1 = document.getElementById(gameid);
+            append1.appendChild(checkbox1);
+
+
+            document.getElementById(gameid).innerHTML += allPlayers[i];
+            document.getElementById(gameid).innerHTML += ", ";
+            document.getElementById(gameid).innerHTML += allPlayers[i + 1];
+            document.getElementById(gameid).innerHTML += " vs. ";
+            document.getElementById(gameid).innerHTML += allPlayers[i + 2];
+            document.getElementById(gameid).innerHTML += ", ";
+            document.getElementById(gameid).innerHTML += allPlayers[i + 3];
+
+            var checkbox2 = document.createElement('input');
+            checkbox2.type = "checkbox";
+            checkbox2.id = checkid;
+            checkCounter++;
+            checkbox2.o1 = allPlayers[i];
+            checkbox2.o2 = allPlayers[i + 1];
+            checkbox2.p1 = allPlayers[i + 2];
+            checkbox2.p2 = allPlayers[i + 3];
+            var append2 = document.getElementById(gameid);
+            append2.appendChild(checkbox2);
+
+            gameCounter++;
+        }
+
+
+        //**********************************  CREATE BRACKET 2  *******************************************
+
+        function makeBracket2() {
+            for (var i = 1; i < checkCounter; i++) {
+                var boxid = "c" + i;
+                var box = getElementById(boxid);
+                if (box.checked == true) {
+                    var loser1 = box.o1;
+                    var current_loss1 = losses.get(loser1);
+                    current_loss1--;
+                    losses.set(loser1, current_loss1);
+
+                    var loser2 = box.o2;
+                    var current_loss2 = losses.get(loser2);
+                    current_loss2--;
+                    losses.set(loser2, current_loss2);
+                }
+
+                alert(loser1 + "(" + current_loss1 + ")");
+                alert(loser2 + "(" + current_loss2 + ")");
+
+            }
+        }
+
+
+
+
+    </script>
+
+
+
 
 </body>
+
 </html>

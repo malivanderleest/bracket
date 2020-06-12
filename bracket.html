@@ -21,7 +21,6 @@
         <div class="border">
             <label for="add"> Add a contestant! </label> <br></br>
              <input type="text" name="add"  id="add" placeholder="your name here" />
-             <!-- <input type="button" onclick="addFunction()" value="Submit"> -->
              <button onclick="addFunction()">Submit</button>
         </div>
         <br></br>
@@ -123,6 +122,8 @@
                 let people = new Map();
                 var counter = 0;
                 var number = 0;
+
+                //var player = {name:"", points:0, team1:"na", team2:"na", team3:"na", team4:"na", team5:"na"};
             
                 function addFunction() {
 
@@ -158,6 +159,15 @@
                 }
 
                 function makeBracket() {
+                    var allPlayers = [];
+
+                    for (let person of people.keys()) {
+                         allPlayers.push(person); 
+                        }
+
+                    //sessionStorage.setItem("players", "people_array");
+                    sessionStorage.setItem("allPlayers", JSON.stringify(allPlayers));
+
                     location.href="tourney.html";
                 }
             
