@@ -230,10 +230,15 @@
 
         </tr>
         <tr>
+            <td id="n0"></td>
+            <td id="w0"></td>
+            <td id="l0"></td>
+
+        </tr>
+        <tr>
             <td id="n1"></td>
             <td id="w1"></td>
             <td id="l1"></td>
-
         </tr>
         <tr>
             <td id="n2"></td>
@@ -245,17 +250,17 @@
             <td id="w3"></td>
             <td id="l3"></td>
         </tr>
+        </tr>
         <tr>
             <td id="n4"></td>
             <td id="w4"></td>
             <td id="l4"></td>
-        </tr>
+
         </tr>
         <tr>
             <td id="n5"></td>
             <td id="w5"></td>
             <td id="l5"></td>
-
         </tr>
         <tr>
             <td id="n6"></td>
@@ -266,11 +271,6 @@
             <td id="n7"></td>
             <td id="w7"></td>
             <td id="l7"></td>
-        </tr>
-        <tr>
-            <td id="n8"></td>
-            <td id="w8"></td>
-            <td id="l8"></td>
         </tr>
     </table>
 
@@ -517,19 +517,42 @@
 
 
 
-            shuffle(allPlayers);
+            // shuffle(allPlayers);
 
-            numOut = (allPlayers.length) % 4;
+            // numOut = (allPlayers.length) % 4;
 
 
 
-            for (var i = 0; i < numOut; i++) {
+            // for (var i = 0; i < numOut; i++) {
 
-                document.getElementById("s2").innerHTML += allPlayers[i];
+            //     document.getElementById("s2").innerHTML += allPlayers[i];
 
-                document.getElementById("s2").innerHTML += ", ";
+            //     document.getElementById("s2").innerHTML += ", ";
 
+            // }
+
+            for(var i=0; i<allPlayers.length; i++){
+                round2players[i]=allPlayers[i];
             }
+
+            shuffle(round2players);
+                    var numOut = (round2players.length) % 4;
+                    var inc = 0;
+                    var outr2 = []
+                    while (numOut > 0) {
+                        var outname = round2players[inc];
+                        if (hasSatOut.get(outname) == true) {
+                            inc++;
+                        } else {
+                            hasSatOut.set(outname, true);
+                            outr2.push(outname);
+                            document.getElementById("s2").innerHTML += round2players[inc];
+                            document.getElementById("s2").innerHTML += ", ";
+                            round2players.splice(inc, 1);
+                            inc++;
+                            numOut--;
+                        }
+                    }
 
 
 
@@ -539,7 +562,7 @@
 
 
 
-            for (var i = numOut; i < allPlayers.length; i = i + 4) {
+            for (var i = 0; i < round2players.length; i = i + 4) {
 
                 var gameid = "g2" + gameCounter;
 
@@ -553,9 +576,9 @@
 
                 checkbox1.id = checkid;
 
-                checkbox1.name = allPlayers[i + 2];
+                checkbox1.name = round2players[i + 2];
 
-                checkbox1.value = allPlayers[i + 3];
+                checkbox1.value = round2players[i + 3];
 
 
 
@@ -575,19 +598,19 @@
 
 
 
-                document.getElementById(gameid).innerHTML += allPlayers[i];
+                document.getElementById(gameid).innerHTML += round2players[i];
 
                 document.getElementById(gameid).innerHTML += ", ";
 
-                document.getElementById(gameid).innerHTML += allPlayers[i + 1];
+                document.getElementById(gameid).innerHTML += round2players[i + 1];
 
                 document.getElementById(gameid).innerHTML += " vs. ";
 
-                document.getElementById(gameid).innerHTML += allPlayers[i + 2];
+                document.getElementById(gameid).innerHTML += round2players[i + 2];
 
                 document.getElementById(gameid).innerHTML += ", ";
 
-                document.getElementById(gameid).innerHTML += allPlayers[i + 3];
+                document.getElementById(gameid).innerHTML += round2players[i + 3];
 
 
 
@@ -597,9 +620,9 @@
 
                 checkbox2.id = checkid;
 
-                checkbox2.name = allPlayers[i];
+                checkbox2.name = round2players[i];
 
-                checkbox2.value = allPlayers[i + 1];
+                checkbox2.value = round2players[i + 1];
 
 
 
@@ -724,7 +747,7 @@
                 var boxid = "c3" + i;
                 var box = document.getElementById(boxid);
                 if (box.checked == true) {
-
+                    var gamesPlayed = 3;
                     var loser1 = box.name;
 
                     var current_loss1 = losses.get(loser1);
@@ -818,7 +841,7 @@ for (var i = 1; i < checkCounter; i++) {
     var boxid = "c4" + i;
     var box = document.getElementById(boxid);
     if (box.checked == true) {
-
+        gamesPlayed = 4;
         var loser1 = box.name;
 
         var current_loss1 = losses.get(loser1);
@@ -900,6 +923,63 @@ for (var i = numOut; i < round5players.length; i = i + 4) {
     gameCounter++;
 
 }
+
+}
+//***************************************************   FINALS BRACKET   *************************************************************
+
+function final() {
+
+    var finalPlayers = [];
+
+for (var i = 1; i < checkCounter; i++) {
+
+    var boxid = "c5" + i;
+    var box = document.getElementById(boxid);
+    if (box.checked == true) {
+        gamesPlayed = 5;
+        var loser1 = box.name;
+
+        var current_loss1 = losses.get(loser1);
+        current_loss1++;
+        losses.set(loser1, current_loss1);
+
+        var loser2 = box.value;
+        var current_loss2 = losses.get(loser2);
+        current_loss2++;
+        losses.set(loser2, current_loss2);
+
+    }
+}
+
+for (var i=0; i<round5players.length; i++) {
+    if (losses.get(round5players[i]) >= 2) {
+        outPlayers.push(round5players[i]);
+    } else {
+        finalPlayers.push(round5players[i]);
+    }
+
+}
+// for (var i = 0; i < outr5.length; i++) {
+//     finalPlayers.push(outr5[i]);
+// }
+
+for (var i = 0; i < finalPlayers.length; i++) {
+    var nameCell = "n" + i;
+    var winCell = "w" + i;
+    var lossCell = "l" + i;
+
+    document.getElementById(nameCell).innerHTML = finalPlayers[i];
+    var playerLosses = losses.get(finalPlayers[i]);
+    var playerWins = gamesPlayed-playerLosses;
+    if (hasSatOut.get(finalPlayers[i]) == true) {
+        playerWins--;
+    }
+    document.getElementById(winCell).innerHTML = playerWins;
+    document.getElementById(lossCell).innerHTML = playerLosses;
+
+
+}
+
 
 }
     </script>
