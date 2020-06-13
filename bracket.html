@@ -145,13 +145,15 @@
 
                 function deleteFunction() {
 
-                    var nameOf = document.getElementById("delete").value;
-                    var index = people.get(nameOf);
+                    var deletename = document.getElementById("delete").value;
+                    var index = people.get(deletename);
+                    people.delete(deletename);
 
         
                     var tableid = "t" + index;
 
-                    document.getElementById(tableid).innerHTML = " ";
+                    document.getElementById(tableid).innerHTML = "_";
+                    
                    
                     number--;
                     document.getElementById("num_people").innerHTML = number;
