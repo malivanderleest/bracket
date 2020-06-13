@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Cornhole 2020</title>
+
+
+
+    <link rel="stylesheet" type="text/css" href="bracket.css">
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+    <img src="cornhole title.png" alt="Cornhole 2020" width="1500" height="300">
+
+
+
+    <h1>Round 1</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g1"></td>
+            <td id="g2"></td>
+        </tr>
+        <tr>
+            <td id="g3"></td>
+            <td id="g4"></td>
+        </tr>
+        <tr>
+            <td id="g5"></td>
+            <td id="g6"></td>
+        </tr>
+        <tr>
+            <td id="g7"></td>
+            <td id="g8"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 1:</p>
+    <p id="s1"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="makeBracket2()">Submit Winners and Create Round 2 Bracket!</button>
+    </div>
+    <hr>
+
+    <p id="test1"></p>
+    <p id="test2"></p>
+
+    <h1>Round 2</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g21"></td>
+            <td id="g22"></td>
+        </tr>
+        <tr>
+            <td id="g23"></td>
+            <td id="g24"></td>
+        </tr>
+        <tr>
+            <td id="g25"></td>
+            <td id="g26"></td>
+        </tr>
+        <tr>
+            <td id="g27"></td>
+            <td id="g28"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 2:</p>
+    <p id="s2"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="makeBracket3()">Submit Winners and Create Round 3 Bracket!</button>
+    </div>
+    <hr>
+
+
+    <h1>Round 3</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g31"></td>
+            <td id="g32"></td>
+        </tr>
+        <tr>
+            <td id="g33"></td>
+            <td id="g34"></td>
+        </tr>
+        <tr>
+            <td id="g35"></td>
+            <td id="g36"></td>
+        </tr>
+        <tr>
+            <td id="g37"></td>
+            <td id="g38"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 3:</p>
+    <p id="s3"></p>
+
+    <p>Eliminated:</p>
+    <p id="out3"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="makeBracket4()">Submit Winners and Create Round 4 Bracket!</button>
+    </div>
+    <hr>
+
+    <h1>Round 4</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g41"></td>
+            <td id="g42"></td>
+        </tr>
+        <tr>
+            <td id="g43"></td>
+            <td id="g44"></td>
+        </tr>
+        <tr>
+            <td id="g45"></td>
+            <td id="g46"></td>
+        </tr>
+        <tr>
+            <td id="g47"></td>
+            <td id="g48"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 4:</p>
+    <p id="s4"></p>
+
+    <p>Eliminated:</p>
+    <p id="out4"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="makeBracket5()">Submit Winners and Create Round 5 Bracket!</button>
+    </div>
+    <hr>
+
+    <h1>Round 5</h1>
+
+    <table>
+        <tr>
+            <th>Boards 1,2</th>
+            <th>Boards 3,4</th>
+        </tr>
+        <tr>
+            <td id="g51"></td>
+            <td id="g52"></td>
+        </tr>
+        <tr>
+            <td id="g53"></td>
+            <td id="g54"></td>
+        </tr>
+        <tr>
+            <td id="g55"></td>
+            <td id="g56"></td>
+        </tr>
+        <tr>
+            <td id="g57"></td>
+            <td id="g58"></td>
+        </tr>
+    </table>
+
+    <p>Sitting Out Round 5:</p>
+    <p id="s5"></p>
+
+    <p>Eliminated:</p>
+    <p id="out5"></p>
+
+    <div class="center">
+        <button class="bracket_button" onclick="final()">Final Standings...</button>
+    </div>
+    <hr>
+
+    <h1>The Final Standings:</h1>
+
+    <table>
+        <tr>
+            <th>Player Name:</th>
+            <th>Player Wins:</th>
+            <th>Player Losses:</th>
+
+        </tr>
+        <tr>
+            <td id="n1"></td>
+            <td id="w1"></td>
+            <td id="l1"></td>
+
+        </tr>
+        <tr>
+            <td id="n2"></td>
+            <td id="w2"></td>
+            <td id="l2"></td>
+        </tr>
+        <tr>
+            <td id="n3"></td>
+            <td id="w3"></td>
+            <td id="l3"></td>
+        </tr>
+        <tr>
+            <td id="n4"></td>
+            <td id="w4"></td>
+            <td id="l4"></td>
+        </tr>
+        </tr>
+        <tr>
+            <td id="n5"></td>
+            <td id="w5"></td>
+            <td id="l5"></td>
+
+        </tr>
+        <tr>
+            <td id="n6"></td>
+            <td id="w6"></td>
+            <td id="l6"></td>
+        </tr>
+        <tr>
+            <td id="n7"></td>
+            <td id="w7"></td>
+            <td id="l7"></td>
+        </tr>
+        <tr>
+            <td id="n8"></td>
+            <td id="w8"></td>
+            <td id="l8"></td>
+        </tr>
+    </table>
+
+    <p>Eliminated:</p>
+    <p id="elim"></p>
+
+
+
+
+
+
+
+
+
+    <!-- ************************    SCRIPT START ************************* -->
+
+
+
+    <script>
+
+        var allPlayers = JSON.parse(sessionStorage.getItem("allPlayers"));
+
+
+
+        let round2players = [];
+
+        let round3players = [];
+
+        let round4players = [];
+
+        let round5players = [];
+
+
+
+        let outPlayers = [];
+
+
+
+        let hasSatOut = new Map();
+
+        let wins = new Map();
+
+        let losses = new Map();
+
+        //let totalPoints = new Map();
+
+
+
+        for (var i = 0; i < allPlayers.length; i++) {
+
+            hasSatOut.set(allPlayers[i], false);
+
+            wins.set(allPlayers[i], 0);
+
+            losses.set(allPlayers[i], 0);
+
+            //totalPoints.set(allPlayers[i], 0); 
+
+        }
+
+
+
+
+
+
+
+        function shuffle(a) {
+
+            var j, x, i;
+
+            for (i = a.length - 1; i > 0; i--) {
+
+                j = Math.floor(Math.random() * (i + 1));
+
+                x = a[i];
+
+                a[i] = a[j];
+
+                a[j] = x;
+
+            }
+
+            return a;
+
+        }
+
+
+
+        //********************************** CREATE BRACKET 1  *******************************************
+
+        shuffle(allPlayers);
+
+        var numOut = (allPlayers.length) % 4;
+
+
+
+        for (var i = 0; i < numOut; i++) {
+
+            document.getElementById("s1").innerHTML += allPlayers[i];
+
+            var outname = allPlayers[i];
+
+            hasSatOut.set(outname, true);
+
+            document.getElementById("s1").innerHTML += ", ";
+
+        }
+
+
+
+        var gameCounter = 1;
+
+        var checkCounter = 1;
+
+
+
+        for (var i = numOut; i < allPlayers.length; i = i + 4) {
+
+            var gameid = "g" + gameCounter;
+
+            var checkid = "c" + checkCounter;
+
+
+
+            var checkbox1 = document.createElement('input');
+
+            checkbox1.type = "checkbox";
+
+            checkbox1.id = checkid;
+
+            checkbox1.name = allPlayers[i + 2];
+
+            checkbox1.value = allPlayers[i + 3];
+
+
+
+            checkCounter++;
+
+            checkid = "c" + checkCounter;
+
+
+
+
+
+            var append1 = document.getElementById(gameid);
+
+            append1.append(checkbox1);
+
+
+
+
+
+            document.getElementById(gameid).innerHTML += allPlayers[i];
+
+            document.getElementById(gameid).innerHTML += ", ";
+
+            document.getElementById(gameid).innerHTML += allPlayers[i + 1];
+
+            document.getElementById(gameid).innerHTML += " vs. ";
+
+            document.getElementById(gameid).innerHTML += allPlayers[i + 2];
+
+            document.getElementById(gameid).innerHTML += ", ";
+
+            document.getElementById(gameid).innerHTML += allPlayers[i + 3];
+
+
+
+            var checkbox2 = document.createElement("input");
+
+            checkbox2.type = "checkbox";
+
+            checkbox2.id = checkid;
+
+            checkbox2.name = allPlayers[i];
+
+            checkbox2.value = allPlayers[i + 1];
+
+
+
+            checkCounter++;
+
+            var append2 = document.getElementById(gameid);
+
+            append2.appendChild(checkbox2);
+
+
+
+            gameCounter++;
+
+        }
+
+
+
+
+
+        //**********************************  CREATE BRACKET 2  *******************************************
+
+
+
+        function makeBracket2() {
+
+
+
+            for (var i = 1; i < checkCounter; i++) {
+
+
+
+                var boxid = "c" + i;
+
+                var box = document.getElementById(boxid);
+
+                if (box.checked == true) {
+
+
+
+                    var loser1 = box.name;
+
+
+
+                    var current_loss1 = losses.get(loser1);
+
+                    current_loss1++;
+
+                    losses.set(loser1, current_loss1);
+
+
+
+                    var loser2 = box.value;
+
+                    var current_loss2 = losses.get(loser2);
+
+                    current_loss2++;
+
+                    losses.set(loser2, current_loss2);
+
+
+
+                }
+
+            }
+
+
+
+
+
+            shuffle(allPlayers);
+
+            numOut = (allPlayers.length) % 4;
+
+
+
+            for (var i = 0; i < numOut; i++) {
+
+                document.getElementById("s2").innerHTML += allPlayers[i];
+
+                document.getElementById("s2").innerHTML += ", ";
+
+            }
+
+
+
+            gameCounter = 1;
+
+            checkCounter = 1;
+
+
+
+            for (var i = numOut; i < allPlayers.length; i = i + 4) {
+
+                var gameid = "g2" + gameCounter;
+
+                var checkid = "c2" + checkCounter;
+
+
+
+                var checkbox1 = document.createElement('input');
+
+                checkbox1.type = "checkbox";
+
+                checkbox1.id = checkid;
+
+                checkbox1.name = allPlayers[i + 2];
+
+                checkbox1.value = allPlayers[i + 3];
+
+
+
+                checkCounter++;
+
+                checkid = "c2" + checkCounter;
+
+
+
+
+
+                var append1 = document.getElementById(gameid);
+
+                append1.append(checkbox1);
+
+
+
+
+
+                document.getElementById(gameid).innerHTML += allPlayers[i];
+
+                document.getElementById(gameid).innerHTML += ", ";
+
+                document.getElementById(gameid).innerHTML += allPlayers[i + 1];
+
+                document.getElementById(gameid).innerHTML += " vs. ";
+
+                document.getElementById(gameid).innerHTML += allPlayers[i + 2];
+
+                document.getElementById(gameid).innerHTML += ", ";
+
+                document.getElementById(gameid).innerHTML += allPlayers[i + 3];
+
+
+
+                var checkbox2 = document.createElement("input");
+
+                checkbox2.type = "checkbox";
+
+                checkbox2.id = checkid;
+
+                checkbox2.name = allPlayers[i];
+
+                checkbox2.value = allPlayers[i + 1];
+
+
+
+                checkCounter++;
+
+                var append2 = document.getElementById(gameid);
+
+                append2.appendChild(checkbox2);
+
+
+
+                gameCounter++;
+
+            }
+
+        }
+
+
+
+
+
+        //**********************************  CREATE BRACKET 3  *******************************************
+
+
+
+        function makeBracket3() {
+
+            for (var i = 1; i < checkCounter; i++) {
+                var boxid = "c2" + i;
+                var box = document.getElementById(boxid);
+                if (box.checked == true) {
+
+                    var loser1 = box.name;
+
+                    var current_loss1 = losses.get(loser1);
+                    current_loss1++;
+                    losses.set(loser1, current_loss1);
+
+                    var loser2 = box.value;
+                    var current_loss2 = losses.get(loser2);
+                    current_loss2++;
+                    losses.set(loser2, current_loss2);
+
+                }
+
+            }
+
+            for (let person of losses.keys()) {
+                if (losses.get(person) >= 2) {
+                    outPlayers.push(person);
+                } else {
+                    round3players.push(person);
+                }
+
+            }
+
+            shuffle(round3players);
+            numOut = (round3players.length) % 4;
+
+
+            for (var i = 0; i < numOut; i++) {
+                document.getElementById("s3").innerHTML += round3players[i];
+                document.getElementById("s3").innerHTML += ", ";
+            }
+
+            for (var i = 0; i < outPlayers.length; i++) {
+                document.getElementById("out3").innerHTML += outPlayers[i];
+                document.getElementById("out3").innerHTML += ", ";
+
+            }
+
+            gameCounter = 1;
+            checkCounter = 1;
+
+            for (var i = numOut; i < round3players.length; i = i + 4) {
+                var gameid = "g3" + gameCounter;
+                var checkid = "c3" + checkCounter;
+
+                var checkbox1 = document.createElement('input');
+                checkbox1.type = "checkbox";
+                checkbox1.id = checkid;
+                checkbox1.name = round3players[i + 2];
+                checkbox1.value = round3players[i + 3];
+
+                checkCounter++;
+                checkid = "c3" + checkCounter;
+
+
+                var append1 = document.getElementById(gameid);
+                append1.append(checkbox1);
+
+
+                document.getElementById(gameid).innerHTML += round3players[i];
+                document.getElementById(gameid).innerHTML += ", ";
+                document.getElementById(gameid).innerHTML += round3players[i + 1];
+
+                document.getElementById(gameid).innerHTML += " vs. ";
+                document.getElementById(gameid).innerHTML += round3players[i + 2];
+                document.getElementById(gameid).innerHTML += ", ";
+                document.getElementById(gameid).innerHTML += round3players[i + 3];
+
+                var checkbox2 = document.createElement("input");
+                checkbox2.type = "checkbox";
+                checkbox2.id = checkid;
+                checkbox2.name = round3players[i];
+                checkbox2.value = round3players[i + 1];
+
+                checkCounter++;
+                var append2 = document.getElementById(gameid);
+                append2.appendChild(checkbox2);
+                gameCounter++;
+
+            }
+
+        }
+
+//**********************************  CREATE BRACKET 4  *******************************************
+
+        function makeBracket4() {
+
+            for (var i = 1; i < checkCounter; i++) {
+                var boxid = "c3" + i;
+                var box = document.getElementById(boxid);
+                if (box.checked == true) {
+
+                    var loser1 = box.name;
+
+                    var current_loss1 = losses.get(loser1);
+                    current_loss1++;
+                    losses.set(loser1, current_loss1);
+
+                    var loser2 = box.value;
+                    var current_loss2 = losses.get(loser2);
+                    current_loss2++;
+                    losses.set(loser2, current_loss2);
+
+                }
+
+            }
+
+            for (var a=0; a<round3players.length; a++) {
+                if (losses.get(round3players[a]) >= 2) {
+                    outPlayers.push(round3players[a]);
+                } else {
+                    round4players.push(round3players[a]);
+                }
+
+            }
+
+            shuffle(round4players);
+            numOut = (round4players.length) % 4;
+
+
+            for (var i = 0; i < numOut; i++) {
+                document.getElementById("s4").innerHTML += round4players[i];
+                document.getElementById("s4").innerHTML += ", ";
+            }
+
+            for (var i = 0; i < outPlayers.length; i++) {
+                document.getElementById("out4").innerHTML += outPlayers[i];
+                document.getElementById("out4").innerHTML += ", ";
+
+            }
+
+            gameCounter = 1;
+            checkCounter = 1;
+
+            for (var i = numOut; i < round4players.length; i = i + 4) {
+                var gameid = "g4" + gameCounter;
+                var checkid = "c4" + checkCounter;
+
+                var checkbox1 = document.createElement('input');
+                checkbox1.type = "checkbox";
+                checkbox1.id = checkid;
+                checkbox1.name = round4players[i + 2];
+                checkbox1.value = round4players[i + 3];
+
+                checkCounter++;
+                checkid = "c4" + checkCounter;
+
+
+                var append1 = document.getElementById(gameid);
+                append1.append(checkbox1);
+
+
+                document.getElementById(gameid).innerHTML += round4players[i];
+                document.getElementById(gameid).innerHTML += ", ";
+                document.getElementById(gameid).innerHTML += round4players[i + 1];
+
+                document.getElementById(gameid).innerHTML += " vs. ";
+                document.getElementById(gameid).innerHTML += round4players[i + 2];
+                document.getElementById(gameid).innerHTML += ", ";
+                document.getElementById(gameid).innerHTML += round4players[i + 3];
+
+                var checkbox2 = document.createElement("input");
+                checkbox2.type = "checkbox";
+                checkbox2.id = checkid;
+                checkbox2.name = round4players[i];
+                checkbox2.value = round4players[i + 1];
+
+                checkCounter++;
+                var append2 = document.getElementById(gameid);
+                append2.appendChild(checkbox2);
+                gameCounter++;
+
+            }
+
+        }
+
+
+//**********************************  CREATE BRACKET 5  *******************************************
+
+function makeBracket5() {
+
+for (var i = 1; i < checkCounter; i++) {
+    var boxid = "c4" + i;
+    var box = document.getElementById(boxid);
+    if (box.checked == true) {
+
+        var loser1 = box.name;
+
+        var current_loss1 = losses.get(loser1);
+        current_loss1++;
+        losses.set(loser1, current_loss1);
+
+        var loser2 = box.value;
+        var current_loss2 = losses.get(loser2);
+        current_loss2++;
+        losses.set(loser2, current_loss2);
+
+    }
+
+}
+
+for (var a=0; a<round4players.length; a++) {
+    if (losses.get(round4players[a]) >= 2) {
+        outPlayers.push(round4players[a]);
+    } else {
+        round5players.push(round4players[a]);
+    }
+
+}
+
+shuffle(round5players);
+numOut = (round5players.length) % 4;
+
+
+for (var i = 0; i < numOut; i++) {
+    document.getElementById("s5").innerHTML += round5players[i];
+    document.getElementById("s5").innerHTML += ", ";
+}
+
+for (var i = 0; i < outPlayers.length; i++) {
+    document.getElementById("out5").innerHTML += outPlayers[i];
+    document.getElementById("out5").innerHTML += ", ";
+
+}
+
+gameCounter = 1;
+checkCounter = 1;
+
+for (var i = numOut; i < round5players.length; i = i + 4) {
+    var gameid = "g5" + gameCounter;
+    var checkid = "c5" + checkCounter;
+
+    var checkbox1 = document.createElement('input');
+    checkbox1.type = "checkbox";
+    checkbox1.id = checkid;
+    checkbox1.name = round5players[i + 2];
+    checkbox1.value = round5players[i + 3];
+
+    checkCounter++;
+    checkid = "c5" + checkCounter;
+
+
+    var append1 = document.getElementById(gameid);
+    append1.append(checkbox1);
+
+
+    document.getElementById(gameid).innerHTML += round5players[i];
+    document.getElementById(gameid).innerHTML += ", ";
+    document.getElementById(gameid).innerHTML += round5players[i + 1];
+
+    document.getElementById(gameid).innerHTML += " vs. ";
+    document.getElementById(gameid).innerHTML += round5players[i + 2];
+    document.getElementById(gameid).innerHTML += ", ";
+    document.getElementById(gameid).innerHTML += round5players[i + 3];
+
+    var checkbox2 = document.createElement("input");
+    checkbox2.type = "checkbox";
+    checkbox2.id = checkid;
+    checkbox2.name = round5players[i];
+    checkbox2.value = round5players[i + 1];
+
+    checkCounter++;
+    var append2 = document.getElementById(gameid);
+    append2.appendChild(checkbox2);
+    gameCounter++;
+
+}
+
+}
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>
